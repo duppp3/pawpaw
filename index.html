@@ -62,7 +62,24 @@
 
     #title p {
       font-size: 0.9em;
-      margin: 0;
+      margin: 5px 0;
+    }
+
+    #buy-button {
+      margin-top: 10px;
+      padding: 10px 20px;
+      background-color: purple;
+      color: white;
+      border: none;
+      border-radius: 8px;
+      font-size: 1em;
+      cursor: pointer;
+      box-shadow: 2px 2px 6px #000;
+      transition: background-color 0.3s ease;
+    }
+
+    #buy-button:hover {
+      background-color: #800080;
     }
   </style>
 </head>
@@ -71,11 +88,11 @@
   <div id="title">
     <h1>$PAWPAW</h1>
     <p>CA: 123</p>
+    <button id="buy-button">BUY</button>
   </div>
 
   <div id="counter">0</div>
 
-  <!-- Pastikan nama file gambar sesuai -->
   <img id="popcat" src="popcat-closed.jpg" alt="Popcat"/>
 
   <script>
@@ -93,11 +110,8 @@
       popcat.src = 'popcat-closed.jpg';
     };
 
-    // Mouse events (laptop)
     popcat.addEventListener('mousedown', openMouth);
     popcat.addEventListener('mouseup', closeMouth);
-
-    // Touch events (HP)
     popcat.addEventListener('touchstart', openMouth);
     popcat.addEventListener('touchend', closeMouth);
   </script>
