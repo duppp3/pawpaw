@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Popcat Fullscreen</title>
+  <title>$PAWPAW - Popcat Fullscreen</title>
   <style>
     * {
       margin: 0;
@@ -29,7 +29,7 @@
 
     #counter {
       position: absolute;
-      top: 10px;
+      top: 120px;
       left: 50%;
       transform: translateX(-50%);
       font-size: 3em;
@@ -38,9 +38,36 @@
       text-shadow: 2px 2px 4px #000;
       z-index: 10;
     }
+
+    #title {
+      position: absolute;
+      top: 20px;
+      left: 50%;
+      transform: translateX(-50%);
+      text-align: center;
+      color: white;
+      font-family: 'Arial', sans-serif;
+      z-index: 10;
+      text-shadow: 2px 2px 4px #000;
+    }
+
+    #title h1 {
+      font-size: 2.5em;
+      margin: 0;
+    }
+
+    #title p {
+      font-size: 0.9em;
+      margin: 0;
+    }
   </style>
 </head>
 <body>
+
+  <div id="title">
+    <h1>$PAWPAW</h1>
+    <p>CA: AADAEAOWEIJADIOSJAOWHEIOAHOEWEA</p>
+  </div>
 
   <div id="counter">0</div>
   <img id="popcat" src="popcat-closed.png" alt="Popcat">
