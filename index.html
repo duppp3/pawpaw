@@ -16,6 +16,10 @@
       height: 100%;
       overflow: hidden;
       background-color: black;
+      -webkit-user-select: none;
+      -moz-user-select: none;
+      -ms-user-select: none;
+      user-select: none;
     }
 
     #popcat {
@@ -24,10 +28,10 @@
       left: 0;
       width: 100vw;
       height: 100vh;
-      object-fit: cover;
+      background-image: url('popcat-closed.jpg');
+      background-size: cover;
+      background-position: center;
       touch-action: manipulation;
-      user-select: none;
-      -webkit-user-drag: none;
       z-index: 1;
     }
 
@@ -62,56 +66,75 @@
 
     #title p {
       font-size: 0.9em;
-      margin: 5px 0;
+      margin: 0;
     }
 
-    #buy-button {
-      margin-top: 10px;
-      padding: 10px 20px;
+    #buy {
+      position: absolute;
+      top: 180px;
+      left: 50%;
+      transform: translateX(-50%);
+      padding: 10px 30px;
+      font-size: 1em;
       background-color: purple;
       color: white;
       border: none;
-      border-radius: 8px;
-      font-size: 1em;
+      border-radius: 5px;
+      font-weight: bold;
+      z-index: 10;
       cursor: pointer;
       box-shadow: 2px 2px 6px #000;
-      transition: background-color 0.3s ease;
     }
 
-    #buy-button:hover {
-      background-color: #800080;
+    #buy:hover {
+      background-color: #8e44ad;
     }
   </style>
+  <script>
+    // Cegah klik kanan
+    document.addEventListener('contextmenu', event => event.preventDefault());
+  </script>
 </head>
 <body>
 
   <div id="title">
     <h1>$PAWPAW</h1>
     <p>CA: 123</p>
-    <button id="buy-button">BUY</button>
   </div>
+
+  <button id="buy" onclick="window.open('https://your-buy-link.com', '_blank')">BUY</button>
 
   <div id="counter">0</div>
 
-  <img id="popcat" src="popcat-closed.jpg" alt="Popcat"/>
+  <div id="popcat"></div>
 
   <script>
     const popcat = document.getElementById('popcat');
     const counter = document.getElementById('counter');
     let count = 0;
+    let isOpen = false;
 
     const openMouth = () => {
-      popcat.src = 'popcat-open.jpg';
-      count++;
-      counter.textContent = count;
+      if (!isOpen) {
+        popcat.style.backgroundImage = "url('popcat-open.jpg')";
+        count++;
+        counter.textContent = count;
+        isOpen = true;
+      }
     };
 
     const closeMouth = () => {
-      popcat.src = 'popcat-closed.jpg';
+      if (isOpen) {
+        popcat.style.backgroundImage = "url('popcat-closed.jpg')";
+        isOpen = false;
+      }
     };
 
+    // Mouse events (PC/laptop)
     popcat.addEventListener('mousedown', openMouth);
     popcat.addEventListener('mouseup', closeMouth);
+
+    // Touch events (HP/tablet)
     popcat.addEventListener('touchstart', openMouth);
     popcat.addEventListener('touchend', closeMouth);
   </script>
