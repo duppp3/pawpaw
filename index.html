@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>$PAWPAW - Popcat Fullscreen</title>
   <style>
     * {
@@ -11,7 +11,7 @@
       box-sizing: border-box;
     }
 
-    body, html {
+    html, body {
       width: 100%;
       height: 100%;
       overflow: hidden;
@@ -19,12 +19,16 @@
     }
 
     #popcat {
-      width: 100%;
-      height: 100%;
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
       object-fit: cover;
       touch-action: manipulation;
       user-select: none;
       -webkit-user-drag: none;
+      z-index: 1;
     }
 
     #counter {
@@ -70,7 +74,9 @@
   </div>
 
   <div id="counter">0</div>
-  <img id="popcat" src="popcat-closed.png" alt="Popcat">
+
+  <!-- Pastikan nama file gambar sesuai -->
+  <img id="popcat" src="popcat-closed.jpg" alt="Popcat"/>
 
   <script>
     const popcat = document.getElementById('popcat');
@@ -78,17 +84,20 @@
     let count = 0;
 
     const openMouth = () => {
-      popcat.src = 'popcat-open.png';
+      popcat.src = 'popcat-open.jpg';
       count++;
       counter.textContent = count;
     };
 
     const closeMouth = () => {
-      popcat.src = 'popcat-closed.png';
+      popcat.src = 'popcat-closed.jpg';
     };
 
+    // Mouse events (laptop)
     popcat.addEventListener('mousedown', openMouth);
     popcat.addEventListener('mouseup', closeMouth);
+
+    // Touch events (HP)
     popcat.addEventListener('touchstart', openMouth);
     popcat.addEventListener('touchend', closeMouth);
   </script>
